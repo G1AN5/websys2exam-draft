@@ -1,13 +1,189 @@
+/* src/index.css */
+
+/* Global styles for the body and fonts */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Georgia', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #a7c5d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden; /* Crucial: Prevent scrolling on the body */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
+}
+
+/* Base styles for buttons to match the image */
+button {
+  background-color: #f7e1b7;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #e0c89e;
+}
+
+button:active {
+  background-color: #d1b88e;
+}
+
+/* Input field styling */
+input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+/* --- Aesthetic circles (blobs) on the sides --- */
+.circle-blob {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  filter: blur(8px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Positioning for the circles */
+.circle-blob:nth-child(1) { top: 10%; left: 5%; width: 100px; height: 100px; }
+.circle-blob:nth-child(2) { bottom: 15%; left: 10%; width: 120px; height: 120px; }
+.circle-blob:nth-child(3) { top: 30%; left: -5%; width: 80px; height: 80px; }
+.circle-blob:nth-child(4) { top: 20%; right: 5%; width: 90px; height: 90px; }
+.circle-blob:nth-child(5) { bottom: 10%; right: 8%; width: 110px; height: 110px; }
+.circle-blob:nth-child(6) { top: 5%; right: -5%; width: 70px; height: 70px; }
+.circle-blob:nth-child(7) { bottom: -5%; left: 20%; width: 130px; height: 130px; }
+.circle-blob:nth-child(8) { top: 60%; right: -10%; width: 100px; height: 100px; }
+.circle-blob:nth-child(9) { top: 45%; left: 15%; width: 70px; height: 70px; opacity: 0.8; }
+.circle-blob:nth-child(10) { bottom: 25%; right: 20%; width: 90px; height: 90px; opacity: 0.7; }
+.circle-blob:nth-child(11) { top: -2%; left: 30%; width: 60px; height: 60px; opacity: 0.9; }
+.circle-blob:nth-child(12) { bottom: 30%; left: -10%; width: 110px; height: 110px; opacity: 0.6; }
+.circle-blob:nth-child(13) { top: 80%; right: 15%; width: 85px; height: 85px; opacity: 0.85; }
+.circle-blob:nth-child(14) { top: 55%; left: -8%; width: 95px; height: 95px; opacity: 0.75; }
+.circle-blob:nth-child(15) { bottom: 0%; right: 30%; width: 75px; height: 75px; opacity: 0.9; }
+
+
+/* --- Sidebar Styles --- */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #f7e1b7;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.sidebar-close-btn {
+  background: none;
+  border: none;
+  font-size: 2em;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  padding: 0;
+  box-shadow: none;
+}
+
+.sidebar-close-btn:hover {
+  color: #555;
+  background: none;
+}
+
+.sidebar-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #8daac1 #f7e1b7;
+}
+
+.sidebar-nav-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar-nav-list::-webkit-scrollbar-track {
+  background: #f7e1b7;
+  border-radius: 4px;
+}
+
+.sidebar-nav-list::-webkit-scrollbar-thumb {
+  background-color: #8daac1;
+  border-radius: 4px;
+  border: 2px solid #f7e1b7;
+}
+
+.sidebar-nav-item button {
+  width: 100%;
+  text-align: left;
+  background-color: #a7c5d9;
+  color: #333;
+  padding: 15px;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+}
+
+.sidebar-nav-item button.active {
+  background-color: #8daac1;
+  border: 2px solid #333;
+}
+
+.sidebar-nav-item button:hover {
+  background-color: #8daac1;
+}
+
+/* Overlay to dim background when sidebar is open */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+.overlay.open {
+  display: block;
 }
