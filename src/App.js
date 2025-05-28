@@ -1,14 +1,11 @@
-// src/App.js
-
 import React, { useState } from 'react';
 
 import MultipleChoice from './components/MultipleChoice';
 import TrueOrFalse from './components/TrueOrFalse';
 import Identification from './components/Identification';
-import questions from './questions.json'; // Assuming react_questions.json is named questions.json
+import questions from './questions.json';
 
 function App() {
-    // Use React's useState for state management
     const [userName, setUserName] = useState('');
     const [totalScore, setTotalScore] = useState(0);
     const [counter, setCounter] = useState(0);
@@ -23,7 +20,6 @@ function App() {
         { id: false, value: 'False' },
     ];
 
-    // currentQuestion is derived from state, no need to define it as a separate state variable
     const currentQuestion = questions[counter];
 
     const HandleNext = () => {
@@ -123,7 +119,7 @@ function App() {
         setShowSidebar(false); // Close sidebar after selection
     };
 
-    // Inline Styles (as per previous working version)
+    // Inline Styles
     const headerStyle = {
         width: '100vw',
         height: '60px',
@@ -135,7 +131,7 @@ function App() {
 
     const headerLeftStyle = {
         fontFamily: 'Georgia, serif',
-        fontSize: '24px', // Fixed font size in pixels
+        fontSize: '24px', 
         fontStyle: 'italic',
         fontWeight: 'bold',
         color: '#333',
@@ -150,7 +146,7 @@ function App() {
         padding: '10px 20px',
         borderRadius: '5px',
         boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-        fontSize: '20px', // Fixed font size in pixels
+        fontSize: '20px', 
         fontWeight: 'bold',
         color: '#333',
         fontFamily: 'Roboto, Arial, sans-serif',
@@ -162,7 +158,7 @@ function App() {
     };
 
     const hamburgerIconStyle = {
-        fontSize: '32px', // Fixed font size in pixels
+        fontSize: '32px', 
         cursor: 'pointer',
         color: '#333',
         position: 'absolute',
@@ -177,7 +173,7 @@ function App() {
         borderRadius: '8px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
         width: '60vw',
-        height: '500px', // Set a FIXED HEIGHT for the overall quiz box
+        height: '500px', 
         maxWidth: '900px',
         display: 'flex',
         flexDirection: 'column',
@@ -194,24 +190,20 @@ function App() {
         display: 'flex',
         justifyContent: 'space-between',
         width: '100%',
-        marginTop: 'auto', // Pushes buttons to the bottom
+        marginTop: 'auto', 
         paddingTop: '20px',
         borderTop: '1px solid #eee',
-        flexShrink: 0, // Prevents buttons from shrinking
+        flexShrink: 0, 
         boxSizing: 'border-box',
-        // Approximate height of this container (padding-top + button height + margins)
-        // This will be used to calculate the remaining height for the content area
-        // Adjust '70px' if your buttons or padding are different
         minHeight: '70px',
     };
 
     const questionContentAreaStyle = {
-        flexGrow: 1, // Allows this div to take up available space
+        flexGrow: 1, 
         width: '100%',
-        // Calculate height: total quizBox height - (top padding + bottom padding + navButtonsContainer height)
-        height: `calc(100% - ${30 + 30 + 70}px)`, // 30px top padding + 30px bottom padding of quizBox + 70px for navButtonsContainer
-        overflowY: 'auto', // THIS is where the scrollbar will appear if content overflows
-        paddingRight: '15px', // Add padding to prevent text from touching scrollbar
+        height: `calc(100% - ${30 + 30 + 70}px)`,
+        overflowY: 'auto', 
+        paddingRight: '15px', 
         boxSizing: 'border-box',
         display: 'flex',
         flexDirection: 'column',
@@ -225,14 +217,14 @@ function App() {
         marginBottom: '25px',
         borderRadius: '5px',
         border: '1px solid #ccc',
-        fontSize: '18px', // Fixed font size
+        fontSize: '18px', 
         boxSizing: 'border-box',
         textAlign: 'center',
     };
 
     const welcomeScreenButtonStyle = {
         padding: '12px 30px',
-        fontSize: '18px', // Fixed font size
+        fontSize: '18px', 
     };
 
     const welcomeScreenContentStyle = {
@@ -246,8 +238,7 @@ function App() {
         flexGrow: 1,
         overflowX: 'hidden',
         boxSizing: 'border-box',
-        // To make sure welcome screen also fits within questionContentAreaStyle
-        height: `calc(100% - ${30 + 30 + 70}px)`, // Match questionContentAreaStyle height
+        height: `calc(100% - ${30 + 30 + 70}px)`,
     };
 
     const quizCompletedContentStyle = {
@@ -260,22 +251,21 @@ function App() {
         flexGrow: 1,
         overflowX: 'hidden',
         boxSizing: 'border-box',
-        // To make sure results screen also fits within questionContentAreaStyle
-        height: `calc(100% - ${30 + 30 + 70}px)`, // Match questionContentAreaStyle height
+        height: `calc(100% - ${30 + 30 + 70}px)`,
     };
 
     const examContent = () => {
         // If not taking exam (initial state)
         if (takingExam === null) {
             return (
-                <div style={welcomeScreenContentStyle}> {/* Apply the new style here */}
+                <div style={welcomeScreenContentStyle}> {}
                     <h2 style={{ color: '#333', marginBottom: '25px', fontSize: '2em' }}>Welcome to the Exam!</h2>
                     <input
                         type="text"
                         placeholder="Input name here:"
                         id="userNameTxtBx"
-                        value={userName} // Controlled component
-                        onChange={(e) => setUserName(e.target.value)} // Update userName state
+                        value={userName} 
+                        onChange={(e) => setUserName(e.target.value)} 
                         style={welcomeScreenInputStyle}
                     />
                     <button onClick={getUserName} style={welcomeScreenButtonStyle}>
@@ -288,7 +278,6 @@ function App() {
         // If exam is finished
         if (takingExam === false) {
             return (
-                // Apply the quizCompletedContentStyle here
                 <div style={quizCompletedContentStyle}>
                     <h2 style={{ fontSize: '28px', color: '#28a745', fontWeight: 'bold', marginBottom: '20px' }}>
                         Quiz Completed!
@@ -342,7 +331,7 @@ function App() {
                     <Identification
                         questionNumber={counter + 1}
                         question={currentQuestion.question}
-                        currentAnswer={textInputAnswer} // Pass the controlled text input state
+                        currentAnswer={textInputAnswer} 
                         setTextInput={setTextInput}
                     />
                 );
