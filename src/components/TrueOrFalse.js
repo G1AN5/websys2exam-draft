@@ -1,12 +1,10 @@
-// src/components/TrueOrFalse.js - Only showing relevant style changes
-
 import React from 'react';
 
 function TrueOrFalse({ questionNumber, question, choices, currentAnswer, setAnswer }) {
     const questionStyle = {
-        fontSize: '1.4em', // Adjusted
+        fontSize: '1.4em', 
         fontWeight: 'bold',
-        marginBottom: '18px', // Adjusted
+        marginBottom: '18px', 
         color: '#333',
         textAlign: 'left',
         width: '100%',
@@ -17,14 +15,14 @@ function TrueOrFalse({ questionNumber, question, choices, currentAnswer, setAnsw
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
-        gap: '12px', // Adjusted
-        marginBottom: '18px', // Adjusted
+        gap: '12px', 
+        marginBottom: '18px', 
         boxSizing: 'border-box',
     };
 
     const choiceStyle = {
         backgroundColor: '#fff',
-        padding: '12px 18px', // Adjusted
+        padding: '12px 18px', 
         borderRadius: '5px',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         cursor: 'pointer',
@@ -32,7 +30,7 @@ function TrueOrFalse({ questionNumber, question, choices, currentAnswer, setAnsw
         textAlign: 'left',
         border: '1px solid #eee',
         boxSizing: 'border-box',
-        fontSize: '1.0em', // Adjusted
+        fontSize: '1.0em', 
         color: '#555',
     };
 
