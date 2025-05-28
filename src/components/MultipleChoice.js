@@ -1,12 +1,10 @@
-// src/components/MultipleChoice.js - Only showing relevant style changes
-
 import React from 'react';
 
 function MultipleChoice({ questionNumber, question, choices, currentAnswer, setAnswer }) {
     const questionStyle = {
-        fontSize: '1.4em', // Slightly smaller font for question
+        fontSize: '1.4em', 
         fontWeight: 'bold',
-        marginBottom: '18px', // Adjusted margin
+        marginBottom: '18px', 
         color: '#333',
         textAlign: 'left',
         width: '100%',
@@ -17,14 +15,14 @@ function MultipleChoice({ questionNumber, question, choices, currentAnswer, setA
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
-        gap: '12px', // Slightly smaller gap
-        marginBottom: '18px', // Adjusted margin
+        gap: '12px', 
+        marginBottom: '18px', 
         boxSizing: 'border-box',
     };
 
     const choiceStyle = {
         backgroundColor: '#fff',
-        padding: '12px 18px', // Slightly less padding
+        padding: '12px 18px', 
         borderRadius: '5px',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         cursor: 'pointer',
@@ -32,7 +30,7 @@ function MultipleChoice({ questionNumber, question, choices, currentAnswer, setA
         textAlign: 'left',
         border: '1px solid #eee',
         boxSizing: 'border-box',
-        fontSize: '1.0em', // Slightly smaller font for choices
+        fontSize: '1.0em', 
         color: '#555',
     };
 
